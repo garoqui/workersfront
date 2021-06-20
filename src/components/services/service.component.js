@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { getAll, findByID } from '../../services/service.service'
 import  ModalService  from '../services/service.modal'
 
@@ -15,20 +14,12 @@ const GetServices = () => {
 
     //charge services to services hook
     useEffect(() => {        
-        getAll()
-            .then(res => {
-                console.log(res)
-                setService(res.data.services)                
-            })
-            .catch(err => console.log(err))
+        getAll().then( res => setService(res)).catch( err => console.log(err))
+           
     },[])
 
     useEffect(() => {        
-        getAll()
-            .then(res => {
-                setService(res.data.services)                
-            })
-            .catch(err => console.log(err))
+        getAll().then( res => setService(res)).catch( err => console.log(err))
     },[visibleModal])
 
     
@@ -36,7 +27,7 @@ const GetServices = () => {
     const getService = (id)=>{                
             findByID(id)
             .then(res=>{
-                setServiceSelected(res.data.service)
+                setServiceSelected(res)
                 openModal()
             })        
     } 
@@ -58,7 +49,7 @@ const GetServices = () => {
 
     return (
         <div>
-            {visibleModal}
+            <div><h2>SERVICIOS</h2></div>
             <table className="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
