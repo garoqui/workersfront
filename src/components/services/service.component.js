@@ -49,7 +49,7 @@ const GetServices = () => {
 
     return (
         <div>
-            <div><h2>SERVICIOS</h2></div>
+            <div class="p-3 mb-2 bg-success text-white"><h5>SERVICIOS</h5></div>
             <table className="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
