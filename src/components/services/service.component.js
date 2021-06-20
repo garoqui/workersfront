@@ -17,6 +17,7 @@ const GetServices = () => {
     useEffect(() => {        
         getAll()
             .then(res => {
+                console.log(res)
                 setService(res.data.services)                
             })
             .catch(err => console.log(err))
@@ -62,7 +63,7 @@ const GetServices = () => {
                 <thead>
                     <tr>
                         <th scope="col">Servicio</th>
-                        <th scope="col">Acion</th>
+                        <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
