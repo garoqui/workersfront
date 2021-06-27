@@ -19,8 +19,8 @@ const SearchService = ( {service})=>{
     },[service])
 
     return(
-        <div>
-            <div class={serviceSelected.length>0 ? 'dropdown position-absolute' : 'dropdown-menu position-absolute'}>
+        <div class="bg-light">
+            <div class={serviceSelected.length>0 ? 'dropdown position-absolute bg-light' : 'dropdown-menu position-absolute bg-light'}>
             {serviceSelected.map( res =>(
                     <a className="dropdown-item cursor-pointer" key={res._id}>{res.name}</a>
                 ))}    

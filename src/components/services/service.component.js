@@ -6,8 +6,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import SearchService from './service.search'
 
 
+
 const GetServices = () => {
 
+  
+    const [crudOperation, setCrudOperation] = useState()
     //show or not modal window
     const [visibleModal, setVisibleModal] = useState(false)
     //all services
@@ -16,6 +19,7 @@ const GetServices = () => {
     const [ serviceSelected, setServiceSelected] = useState({})
     //search charge
     const [ search, setSearch] = useState([])
+  
 
     //charge services to services hook
     useEffect(() => {             
@@ -33,6 +37,7 @@ const GetServices = () => {
             findByID(id)
             .then(res=>{
                 setServiceSelected(res)
+                setCrudOperation("edit")
                 openModal()
             })        
     } 
@@ -58,6 +63,12 @@ const GetServices = () => {
         setVisibleModal(false)        
     }
 
+    const crudAction = (e)=>{
+        console.log(e)
+        setCrudOperation(e)
+        openModal()
+    }
+
 
     
 
@@ -73,12 +84,12 @@ const GetServices = () => {
                     </div>
 
                     <div>
-                        <SearchService service={search}/>
+                        <SearchService service={search} />
                     </div>
 
                 </div>
                 
-                <div className="col-sm-3 text-left"><button type="button" className="btn btn-success">Nuevo Servicio</button></div>
+                <div className="col-sm-3 text-left"><button type="button" name="new" onClick={(e)=>crudAction(e.target.name)} className="btn btn-success">Nuevo Servicio</button></div>
             </div>
             
             <table className="table table-striped table-hover table-bordered">
@@ -104,7 +115,7 @@ const GetServices = () => {
 
                 </tbody>
             </table>
-            <ModalService isOpen={visibleModal} isClose={closeModal} service={serviceSelected} ></ModalService>
+            <ModalService isOpen={visibleModal} isClose={closeModal} service={serviceSelected} crudOperation = {crudOperation} ></ModalService>
         </div>
 
     )
