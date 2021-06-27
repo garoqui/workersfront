@@ -15,3 +15,8 @@ export const update = async( id, value )=>{
     return await axios.put( URLSERVER +"/service/service/"+ id , value)
 }
 
+export const create = async( value )=>{
+    return await axios.post( URLSERVER +"/service/service/", value)
+
+}
+
